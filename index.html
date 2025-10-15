@@ -7,7 +7,25 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-    <h1>ph tube</h1>
+<body class="w-11/12 mx-auto">
+  <!-- header -->
+   <header>
+     <nav class=" flex justify-between items-center my-5 border-b-1 py-3 border-[#D9D9D9]">
+        <div class="logo">
+            <img class="w-[100px]" src="./resources/Logo.png" alt="">
+        </div>
+        <div class="sort"><button class="btn">Sort by view</button></div>
+        <div class="blog"><button class="btn bg-red-400 text-white">Blog</button></div>
+     </nav>
+     <!-- category container -->
+      <nav id="category-container" class="flex justify-center gap-5 py-5">
+        <button class="btn btn-sm">All</button>
+        <button class="btn btn-sm">Music</button>
+        <button class="btn btn-sm">Comedy</button>
+        <button class="btn btn-sm">Drawing</button>
+
+      </nav>
+   </header>
+   <script src="./script/index.js"></script>
 </body>
 </html>
