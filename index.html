@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ph-tube-recap</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="w-11/12 mx-auto">
-  <!-- header -->
-   <header>
-     <nav class=" flex justify-between items-center my-5 border-b-1 py-3 border-[#D9D9D9]">
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="w-11/12 mx-auto">
+    <!-- header -->
+    <header>
+      <nav
+        class="flex justify-between items-center my-5 border-b-1 py-3 border-[#D9D9D9]"
+      >
         <div class="logo">
-            <img class="w-[100px]" src="./resources/Logo.png" alt="">
+          <img class="w-[100px]" src="./resources/Logo.png" alt="" />
         </div>
         <div class="sort"><button class="btn">Sort by view</button></div>
-        <div class="blog"><button class="btn bg-[#FF1F3D] text-white">Blog</button></div>
-     </nav>
-   </header>
-   <!-- category container -->
-      <nav id="category-container" class="flex justify-center gap-5 py-5">
-         <button class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">All</button>
-
+        <div class="blog">
+          <button class="btn bg-[#FF1F3D] text-white">Blog</button>
+        </div>
       </nav>
+    </header>
+    <!-- category container -->
+    <nav id="category-container" class="flex justify-center gap-5 py-5">
+      <button class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">
+        All
+      </button>
+    </nav>
 
-      <section id="display-videos" class="">
-
-      </section>
-   <script src="./script/index.js"></script>
-</body>
+    <section
+      id="display-videos"
+      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
+    ></section>
+    <script src="./script/index.js"></script>
+  </body>
 </html>
