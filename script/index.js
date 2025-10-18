@@ -7,29 +7,46 @@ function loadCategories() {
 function loadVideos() {
   fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
     .then((res) => res.json())
-    .then((data) => displayVideos(data.videos));
-}
+    .then((data) => {
+      removeActiveClass();
+      document.getElementById('btn-all').classList.add('active');
+      displayVideos(data.videos);
 
+    });
+}
+function removeActiveClass(){
+  const active_button=document.getElementsByClassName('active');
+  for(let btn of active_button)
+  {
+    btn.classList.remove("active");
+  }
+}
 function displayCategories(data) {
   const category_container = document.getElementById("category-container");
   for (const item of data) {
     const category_div = document.createElement("div");
     category_div.innerHTML = `
-    <button onclick="loadCategoryVideos(${item.category_id}) " class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${item.category}</button>
+    <button id="btn-${item.category_id}" onclick="loadCategoryVideos(${item.category_id}) " class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${item.category}</button>
     `;
     category_container.appendChild(category_div);
   }
 }
-function loadCategoryVideos(id){
+function loadCategoryVideos(id) {
   const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
   fetch(url)
-  .then(res=> res.json())
-  .then(data=>displayVideos(data.category))
+    .then((res) => res.json())
+    .then((data) => {
+      const clickedButton =document.getElementById(`btn-${id}`);
+      console.log(clickedButton);
+      removeActiveClass();
+      clickedButton.classList.add("active");
+      displayVideos(data.category);
+    });
 }
 function displayVideos(videos) {
   const display_videos = document.getElementById("display-videos");
-  display_videos.innerHTML='';
-  if(videos.length==0) {
+  display_videos.innerHTML = "";
+  if (videos.length == 0) {
     display_videos.innerHTML = `
      <div class="flex flex-col gap-3 justify-center col-span-full py-5 text-center items-center">
         <img src="./resources/Icon.png" alt="" />
@@ -37,6 +54,7 @@ function displayVideos(videos) {
           Oops!! Sorry, There is no content here
         </h2>
       </div>`;
+    return;
   }
   videos.forEach((video) => {
     const div_videos = document.createElement("div");

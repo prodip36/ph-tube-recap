@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ph-tube-recap</title>
+    <style>
+      .active{
+        background: #FF1F3D;
+        color: white;
+      }
+    </style>
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -28,7 +34,7 @@
     </header>
     <!-- category container -->
     <nav id="category-container" class="flex justify-center gap-2 py-5">
-      <button
+      <button id="btn-all"
         onclick="loadVideos()"
         class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white"
       >
