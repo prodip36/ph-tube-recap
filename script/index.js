@@ -29,7 +29,15 @@ function loadCategoryVideos(id){
 function displayVideos(videos) {
   const display_videos = document.getElementById("display-videos");
   display_videos.innerHTML='';
-  
+  if(videos.length==0) {
+    display_videos.innerHTML = `
+     <div class="flex flex-col gap-3 justify-center col-span-full py-5 text-center items-center">
+        <img src="./resources/Icon.png" alt="" />
+        <h2 class="text-2xl font-bold">
+          Oops!! Sorry, There is no content here
+        </h2>
+      </div>`;
+  }
   videos.forEach((video) => {
     const div_videos = document.createElement("div");
     div_videos.innerHTML = `
