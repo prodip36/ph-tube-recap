@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ph-tube-recap</title>
     <style>
-      .active{
-        background: #FF1F3D;
+      .active {
+        background: #ff1f3d;
         color: white;
       }
     </style>
@@ -34,7 +34,8 @@
     </header>
     <!-- category container -->
     <nav id="category-container" class="flex justify-center gap-2 py-5">
-      <button id="btn-all"
+      <button
+        id="btn-all"
         onclick="loadVideos()"
         class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white"
       >
@@ -45,21 +46,19 @@
     <section
       id="display-videos"
       class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
-    >
-     
-    </section>
+    ></section>
     <!-- Open the modal using ID.showModal() method -->
-<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
-<dialog id="video_details" class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box relative p-0 bg-transparent shadow-none">
-    <div id="details-container"></div>
-    <div class="modal-action absolute bottom-2 right-2">
-      <form method="dialog">
-        <button class="btn btn-sm">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog>
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="video_details" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box relative p-0 bg-transparent shadow-none">
+        <div id="details-container"></div>
+        <div class="modal-action absolute bottom-2 right-2">
+          <form method="dialog">
+            <button class="btn btn-sm">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
 
     <script src="./script/index.js"></script>
   </body>

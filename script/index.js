@@ -113,11 +113,21 @@ function displayVideos(videos) {
           <!-- description --> 
           <div class=" space-y-3">
             <h2 class="font-bold text-xl">${video.title}</h2>
-            <p class="text text-gray-400 flex gap-1 items-center">${video.authors[0].profile_name} <img class="h-5 w-5" src="https://img.icons8.com/?size=100&id=98A4yZTt9abw&format=png&color=000000" alt=""></p>
+            <p class="text text-gray-400 flex gap-1 items-center">${
+              video.authors[0].profile_name
+            }
+            ${
+              video.authors[0].verified == true
+                ? '<img class="h-5 w-5" src="https://img.icons8.com/?size=100&id=98A4yZTt9abw&format=png&color=000000" alt=""> ' : ""
+            }
+            
+            </p>
             <p class="text text-gray-400">${video.others.views}</p>
           </div>
         </div>
-        <button  onclick=loadVideoDetails('${video.video_id}') class="btn btn-block">Show Details</button>
+        <button  onclick=loadVideoDetails('${
+          video.video_id
+        }') class="btn btn-block">Show Details</button>
       </div>
       `;
     display_videos.appendChild(div_videos);
