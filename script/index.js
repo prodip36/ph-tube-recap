@@ -9,15 +9,44 @@ function loadVideos() {
     .then((res) => res.json())
     .then((data) => {
       removeActiveClass();
-      document.getElementById('btn-all').classList.add('active');
+      document.getElementById("btn-all").classList.add("active");
       displayVideos(data.videos);
-
     });
 }
-function removeActiveClass(){
-  const active_button=document.getElementsByClassName('active');
-  for(let btn of active_button)
-  {
+const loadVideoDetails=(videoId)=>{
+  url = `https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`;
+  // console.log(url);
+  fetch(url)
+  .then(res=>res.json())
+  .then(data=> displayVideoDescription(data.video))
+}
+const displayVideoDescription=(video)=>{
+  console.log(video);
+
+  const details_container = document.getElementById("details-container");
+  details_container.innerHTML="";
+  const details =document.createElement('div');
+  details.innerHTML = `
+  <div class="rounded-lg bg-base-100 image-full shadow-sm item-center justify-center">
+  <figure>
+    <img class="h-full w-full opacity-80"
+      src="${video.thumbnail}"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">${video.title}</h2>
+    <p>${video.description}</p>
+   
+  </div>
+</div>
+  
+  `;
+  details_container.appendChild(details);
+    document.getElementById("video_details").showModal();
+}
+function removeActiveClass() {
+  const active_button = document.getElementsByClassName("active");
+  for (let btn of active_button) {
     btn.classList.remove("active");
   }
 }
@@ -36,7 +65,7 @@ function loadCategoryVideos(id) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      const clickedButton =document.getElementById(`btn-${id}`);
+      const clickedButton = document.getElementById(`btn-${id}`);
       console.log(clickedButton);
       removeActiveClass();
       clickedButton.classList.add("active");
@@ -88,6 +117,7 @@ function displayVideos(videos) {
             <p class="text text-gray-400">${video.others.views}</p>
           </div>
         </div>
+        <button  onclick=loadVideoDetails('${video.video_id}') class="btn btn-block">Show Details</button>
       </div>
       `;
     display_videos.appendChild(div_videos);
@@ -95,4 +125,4 @@ function displayVideos(videos) {
 }
 
 loadCategories();
-// loadVideos();
+loadVideos();
