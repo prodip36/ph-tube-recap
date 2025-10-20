@@ -137,5 +137,33 @@ document.getElementById('search-input').addEventListener("keyup",(event)=>{
   const input=event.target.value;
   loadVideos(input);
 })
+
+
+//videos sorting section
+document.getElementById("sort-videos").addEventListener("click",(event)=>{
+ const url = "https://openapi.programming-hero.com/api/phero-tube/videos";
+ fetch(url)
+ .then(res=>res.json())
+ .then(data=>loadSortData(data.videos))
+//  const active_btn=document.getElementsByClassName('active');
+// console.log(active_btn);
+});
+//load sort data func
+const loadSortData=(videos)=>{
+  videos.sort(
+    (a, b) => parseViews(b.others.views) - parseViews(a.others.views)
+  );
+  displayVideos(videos);
+}
+//converting view to numeric
+function parseViews(strView){
+  if(!strView) return 0;
+  const clean=strView.replace(/,/g,'').toUpperCase();
+  const num=parseFloat(clean);
+  if(clean.includes('K')) return num*1000;
+  if(clean.includes('M')) return num*1000000;
+  if(clean.includes('B')) return num*1000000000;
+  
+}
 loadCategories();
 loadVideos();
